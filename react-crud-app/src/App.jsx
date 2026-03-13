@@ -11,34 +11,29 @@ import "./App.css";
 
 const BACKGROUNDS = [
   { name: "Ocean Breeze",   value: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
-  { name: "Sunset Vibes",   value: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" },
-  { name: "Arctic Blue",    value: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" },
-  { name: "Forest Fresh",   value: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" },
+  { name: "Slate Dusk",     value: "linear-gradient(135deg, #2c3e6b 0%, #4a5568 100%)" },
+  { name: "Deep Ocean",     value: "linear-gradient(135deg, #1a365d 0%, #2d6a8f 100%)" },
+  { name: "Sage & Stone",   value: "linear-gradient(135deg, #2d4a3e 0%, #4a6741 100%)" },
   { name: "Cherry Blossom", value: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" },
   { name: "Midnight",       value: "linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)" },
-  { name: "Peach Dream",    value: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)" },
+  { name: "Warm Charcoal",  value: "linear-gradient(135deg, #2d2d2d 0%, #4a3f35 100%)" },
   { name: "Aurora",         value: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)" },
 ];
 
 const VIEW_MAX_WIDTHS = {
-  home:    600,
-  todo:    640,
-  notes:   640,
-  weather: 520,
+  home: 600, todo: 640, notes: 640, weather: 520,
 };
 
 function App() {
-  const [view, setView]             = useState("home");
-  const [bgIndex, setBgIndex]       = useState(0);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [emojiEvent, setEmojiEvent] = useState(null);
+  const [view,      setView]      = useState("home");
+  const [bgIndex,   setBgIndex]   = useState(0);
+  const [isLoggedIn,setIsLoggedIn]= useState(false);
+  const [emojiEvent,setEmojiEvent]= useState(null);
 
   const triggerEmoji = (event) => {
     setEmojiEvent(event);
     setTimeout(() => setEmojiEvent(null), 3000);
   };
-
-  const cycleBg = () => setBgIndex(prev => (prev + 1) % BACKGROUNDS.length);
 
   const handleLogin = () => {
     triggerEmoji("login");
@@ -51,7 +46,7 @@ function App() {
       <Box sx={{ background: BACKGROUNDS[bgIndex].value, minHeight: "100vh", transition: "background 0.8s ease" }}>
         <LoginPage
           onLogin={handleLogin}
-          onBgChange={cycleBg}
+          onBgChange={() => setBgIndex(p => (p + 1) % BACKGROUNDS.length)}
           currentBg={BACKGROUNDS[bgIndex]}
         />
         {emojiEvent === "login" && <AnimatedEmoji event="login" />}
@@ -65,13 +60,13 @@ function App() {
       <Navbar
         view={view}
         onViewChange={setView}
-        onBgChange={cycleBg}
-        currentBg={BACKGROUNDS[bgIndex]}
+        backgrounds={BACKGROUNDS}
+        bgIndex={bgIndex}
+        onBgSelect={setBgIndex}
         onLogout={() => { setIsLoggedIn(false); setView("home"); }}
       />
 
-      <Box
-        display="flex" justifyContent="center" alignItems="flex-start"
+      <Box display="flex" justifyContent="center" alignItems="flex-start"
         minHeight="calc(100vh - 56px)" p={3} pt={4}
       >
         <Card sx={{
