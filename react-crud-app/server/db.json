@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "id": "74f6",
+      "firstName": "madhuri",
+      "lastName": "sonawane",
+      "email": "madhunand3103@gmail.com",
+      "phone": "01234567890"
+    },
+    {
+      "id": "f45c",
+      "firstName": " ms  cmds ",
+      "lastName": "n skdcnka",
+      "email": "xyz@gmail.com",
+      "phone": "+911123456780",
+      "countryCode": "+91"
+    },
+    {
+      "id": "3c64",
+      "firstName": "mgddl",
+      "lastName": "mkdm",
+      "email": "xyz@gmail.com",
+      "countryCode": "+91",
+      "phone": "+911234567890"
+    },
+    {
+      "id": "3663",
+      "firstName": " ms  cmds ",
+      "lastName": "n skdcnka",
+      "email": "xyz@gmail.com",
+      "countryCode": "+91",
+      "phone": "+915525455362"
+    }
+  ]
+}
