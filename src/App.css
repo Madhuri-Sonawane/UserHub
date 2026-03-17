@@ -1,0 +1,17 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Inter', 'Segoe UI', sans-serif; }
+
+.shake {
+  animation: shake 0.42s cubic-bezier(0.36,0.07,0.19,0.97) both;
+}
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  18%     { transform: translateX(-8px); }
+  36%     { transform: translateX(8px); }
+  54%     { transform: translateX(-5px); }
+  72%     { transform: translateX(5px); }
+}
+
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 99px; }
